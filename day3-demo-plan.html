@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3 Demo Plan: One-Pager with AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: #0A2443;
+            background: #f5f7fa;
+            padding: 3rem 2rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 1px 3px rgba(10, 36, 67, 0.08);
+        }
+
+        .header {
+            background: #0A2443;
+            color: white;
+            padding: 3rem 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, #0055FF 0%, #2196F3 100%);
+            opacity: 0.15;
+            transform: skewX(-15deg);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        .meta-value {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 3rem;
+        }
+
+        .flow-section {
+            background: #f8f9fb;
+            border-left: 4px solid #0055FF;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .flow-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #0055FF;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .flow-step {
+            background: white;
+            padding: 1.25rem 1rem;
+            border-top: 3px solid #0055FF;
+            box-shadow: 0 1px 3px rgba(10, 36, 67, 0.05);
+        }
+
+        .flow-number {
+            font-size: 1.5rem;
+            font-weight: 200;
+            color: #0055FF;
+            margin-bottom: 0.5rem;
+        }
+
+        .flow-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #0A2443;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .flow-time {
+            font-size: 0.75rem;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 300;
+            margin: 3rem 0 1.5rem;
+            color: #0A2443;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #ECEFF1;
+            letter-spacing: -0.3px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #0A2443;
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background: #0055FF;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.85rem;
+            margin-right: 0.75rem;
+            font-weight: 600;
+        }
+
+        .importance-box {
+            background: linear-gradient(135deg, #FFB706 0%, #FFCA28 100%);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            position: relative;
+            color: #0A2443;
+        }
+
+        .importance-box::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: #0A2443;
+        }
+
+        .importance-box h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .importance-box p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .importance-box strong {
+            font-weight: 600;
+        }
+
+        .takeaway-box {
+            background: #f8f9fb;
+            border-left: 4px solid #0055FF;
+            padding: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .takeaway-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #0055FF;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .takeaway-text {
+            color: #0A2443;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .prompt-box {
+            background: white;
+            border: 1px solid #ECEFF1;
+            border-left: 4px solid #0A2443;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #1F2937;
+            box-shadow: 0 1px 3px rgba(10, 36, 67, 0.05);
+            position: relative;
+        }
+
+        .prompt-label {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #0A2443;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #ECEFF1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copy-button {
+            background: #0055FF;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .copy-button:hover {
+            background: #0A2443;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 85, 255, 0.3);
+        }
+
+        .copy-button:active {
+            transform: translateY(0);
+        }
+
+        .copy-button.copied {
+            background: #10B981;
+        }
+
+        .prompt-content {
+            user-select: all;
+            white-space: pre-wrap;
+        }
+
+        .four-ds-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .d-card {
+            background: white;
+            border: 1px solid #ECEFF1;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .d-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #0055FF 0%, #2196F3 100%);
+        }
+
+        .d-card:hover {
+            box-shadow: 0 4px 12px rgba(10, 36, 67, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .d-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0A2443;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.3px;
+        }
+
+        .d-description {
+            font-size: 0.95rem;
+            color: #4B5563;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .d-examples {
+            font-size: 0.85rem;
+            color: #6B7280;
+            line-height: 1.6;
+            padding-left: 1rem;
+            border-left: 2px solid #ECEFF1;
+        }
+
+        .citation {
+            font-size: 0.8rem;
+            color: #6B7280;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .toolkit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .toolkit-item {
+            background: #f8f9fb;
+            border-left: 3px solid #0055FF;
+            padding: 1.5rem;
+        }
+
+        .toolkit-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0A2443;
+            margin-bottom: 0.5rem;
+        }
+
+        .toolkit-description {
+            font-size: 0.9rem;
+            color: #4B5563;
+            line-height: 1.6;
+        }
+
+        .closing-box {
+            background: #0A2443;
+            color: white;
+            padding: 2.5rem;
+            margin: 3rem 0 0;
+        }
+
+        .closing-box h3 {
+            color: white;
+            margin-top: 0;
+            font-size: 1.3rem;
+            margin-bottom: 1.25rem;
+            font-weight: 500;
+        }
+
+        .closing-box ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .closing-box li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .closing-box li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 6px;
+            background: #0055FF;
+            border-radius: 50%;
+        }
+
+        .closing-box strong {
+            color: #FFB706;
+            font-weight: 600;
+        }
+
+        .critical-box {
+            background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+            padding: 2.5rem;
+            margin: 3rem 0;
+            position: relative;
+            color: white;
+        }
+
+        .critical-box::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: #7F1D1D;
+        }
+
+        .critical-box h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            color: white;
+        }
+
+        .critical-box p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: white;
+        }
+
+        .critical-box strong {
+            font-weight: 600;
+            color: white;
+        }
+
+        details {
+            margin: 1.5rem 0;
+            border: 1px solid #ECEFF1;
+            background: #fafbfc;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #0A2443;
+            padding: 1.25rem 1.5rem;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        summary:hover {
+            background: #f5f7fa;
+        }
+
+        summary::before {
+            content: '▸';
+            display: inline-block;
+            transition: transform 0.2s;
+            color: #0055FF;
+            font-size: 1.1rem;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        details[open] {
+            background: white;
+        }
+
+        .details-content {
+            padding: 1.5rem;
+            border-top: 1px solid #ECEFF1;
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #0A2443;
+        }
+
+        .setup-list {
+            background: #f8f9fb;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+            details {
+                border: none;
+            }
+            summary {
+                display: none;
+            }
+            details .details-content {
+                display: block !important;
+                border-top: none;
+                padding-top: 0;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .flow-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .four-ds-grid,
+            .toolkit-grid {
+                grid-template-columns: 1fr;
+            }
+            .content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            .header {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+            h1 {
+                font-size: 1.75rem;
+            }
+            .flow-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Day 3 Demo Plan: One-Pager with AI</h1>
+            <div class="meta">
+                <div class="meta-item">
+                    <span class="meta-label">Session Lead</span>
+                    <span class="meta-value">Lani Young</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Duration</span>
+                    <span class="meta-value">10 Minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Date</span>
+                    <span class="meta-value">Wednesday, February 18, 2026</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="flow-section">
+                <div class="flow-title">Demo Flow Overview</div>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="flow-number">01</div>
+                        <div class="flow-label">Why This Matters</div>
+                        <div class="flow-time">1 minute</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">02</div>
+                        <div class="flow-label">The 4Ds Framework</div>
+                        <div class="flow-time">2 minutes</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">03</div>
+                        <div class="flow-label">Opening Prompt</div>
+                        <div class="flow-time">1 minute</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">04</div>
+                        <div class="flow-label">Live Interaction</div>
+                        <div class="flow-time">4-5 minutes</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">05</div>
+                        <div class="flow-label">Toolkit + Send Off</div>
+                        <div class="flow-time">1-2 minutes</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="importance-box">
+                <h3>Why This Step Matters Most</h3>
+                <p><strong>This is the most important step in the entire product development process.</strong></p>
+                <p>Oftentimes we get into debates about the solutions, the copy, the UX—and actually it's rooted in a disagreement about the problem and the problems we're trying to solve. If we had spent more time really aligning on the problem to solve and agreeing on that problem, then the rest of it would be smooth sailing.</p>
+                <p><strong>I can't emphasize enough how important I think this step is.</strong> Spend time in the problem space. Convince yourself and understand what is the root cause of the problem and what is the problem to solve. That will then set you up for a better opportunity to step into the solution space.</p>
+                <p><strong>That's why it's so valuable to use AI at this stage.</strong></p>
+            </div>
+
+            <h2><span class="section-number">01</span> Your Goal Today</h2>
+            <p>Understand how to work <strong>WITH</strong> Claude (not just use Claude) to create a compelling one-pager that defines the problem and gets buy-in from leadership. This isn't about prompting tricks—it's about learning to maximize both your brain AND AI's capabilities.</p>
+
+            <h2><span class="section-number">02</span> The Setup</h2>
+            <div class="setup-list">
+                <ul>
+                    <li><strong>Your task:</strong> Walk out in 1 hour with a really solid one-pager that defines the problem and sets you up for a review with leadership to get buy-in that this is a problem worth solving</li>
+                    <li><strong>What you have:</strong>
+                        <ul>
+                            <li>Customer insights brief from Day 2</li>
+                            <li>Your own brain (the most powerful tool)</li>
+                            <li>HCP data sources, competitive research, Jira, Confluence, GitHub</li>
+                            <li>One-pager template</li>
+                            <li>Claude as your AI assistant who can find/source information, help write, and play different stakeholder roles to help you refine before sharing</li>
+                        </ul>
+                    </li>
+                    <li><strong>Demo problem:</strong> Credits as a payment method</li>
+                </ul>
+            </div>
+
+            <h2><span class="section-number">03</span> The 4Ds Framework</h2>
+
+            <div class="takeaway-box">
+                <div class="takeaway-label">Key Takeaway</div>
+                <div class="takeaway-text">When you utilize this framework with any AI, it can help you to not only just 'prompt better' but really get the most out of your interactions and produce better work overall. See how to think about the 4Ds when you engage with Claude.</div>
+            </div>
+
+            <div class="four-ds-grid">
+                <div class="d-card">
+                    <div class="d-title">Delegate</div>
+                    <div class="d-description">Decide what tasks to assign to Claude</div>
+                    <div class="d-examples">Send Claude to find data, research competitors, synthesize information. YOU decide what needs to be done.</div>
+                </div>
+                <div class="d-card">
+                    <div class="d-title">Describe</div>
+                    <div class="d-description">Communicate clearly with Claude</div>
+                    <div class="d-examples">Set clear guardrails, give context, be specific. Bad description = bad output.</div>
+                </div>
+                <div class="d-card">
+                    <div class="d-title">Discern</div>
+                    <div class="d-description">Critically evaluate what Claude gives you</div>
+                    <div class="d-examples">Don't copy/paste wholesale. Ask: is this right? compelling? what's missing? Redirect if needed.</div>
+                </div>
+                <div class="d-card">
+                    <div class="d-title">Diligence</div>
+                    <div class="d-description">Take responsibility for what you do with AI</div>
+                    <div class="d-examples">Ensure accuracy and quality. Consider ethics. Own the final work product.</div>
+                </div>
+            </div>
+
+            <div class="citation">
+                Source: Anthropic AI Fluency Framework. Dakan, R., & Feller, J. (2024). <em>AI Fluency: Frameworks and Foundations</em>. Available at: <a href="https://www.anthropic.com/ai-fluency" target="_blank">anthropic.com/ai-fluency</a>
+            </div>
+
+            <h2><span class="section-number">04</span> Live Demo: The Workflow</h2>
+
+            <h3>Opening Prompt</h3>
+            <div class="prompt-box">
+                <div class="prompt-label">
+                    <span>Initial Setup</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <div class="prompt-content">Hey Claude, I'm writing a one-pager today and I need it to be really great and really solid.
+
+For me, a one-pager is a clear and tight articulation of the problem we're solving—establishing not only that it's a real problem, but that it's a problem worth solving because there's real customer pain. Customer pain at scale. And there's customer and business value if we can solve it.
+
+Today I'm writing a one-pager about using credits as a payment method, and I want you to partner with me to write it together.
+
+I also want you to push me—poke holes, challenge me, help me make it better.
+
+Before we dig in, let me orient you to what I have:
+
+<strong>Resources:</strong>
+
+- <strong>Insights brief:</strong>
+  ~/dev/ai-accelerator/credits/insights_brief.md
+
+- <strong>Credits research brief:</strong>
+  https://laniyoung.github.io/credits-research-brief/research-brief.html
+
+- <strong>One-pager template:</strong>
+  https://housecall.atlassian.net/wiki/spaces/PM/pages/1738703352/Template+Project+Title+1+Pager
+  (use the Atlassian MCP to access this)
+
+- <strong>Plus:</strong>
+  Access to Snowflake, competitive research, and other internal tools if we need them
+
+Start by familiarizing yourself with all of this. Once you've digested everything and you're ready, come back to me and we can get started.</div>
+            </div>
+
+            <details>
+                <summary>Talk Track: What to Say About This Prompt</summary>
+                <div class="details-content">
+                    <p>Notice what I'm doing here:</p>
+                    <ul>
+                        <li>Setting up a <strong>partnership</strong>, not just asking Claude to write something</li>
+                        <li>Defining what "great" looks like for me—problem worth solving, customer pain at scale, business value</li>
+                        <li>Explicitly asking Claude to <strong>push me and challenge me</strong></li>
+                        <li>Giving Claude access to all my resources—insights, template, data</li>
+                        <li>Giving Claude <strong>agency</strong>: "come back when you're ready"</li>
+                    </ul>
+                    <p><strong>This demonstrates DELEGATE and DESCRIBE from the 4Ds.</strong></p>
+                </div>
+            </details>
+
+            <h3>Follow-Up Prompt 1: Invite Questions</h3>
+            <div class="prompt-box">
+                <div class="prompt-label">
+                    <span>Collaborative Setup</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <div class="prompt-content">Before we get started, what are some of the initial questions you have for me or things that you would want to know before we kick off this working session?</div>
+            </div>
+
+            <details>
+                <summary>Talk Track: Why This Matters</summary>
+                <div class="details-content">
+                    <p>I'm inviting Claude to ask <strong>me</strong> questions. This shows partnership—Claude has agency, not just taking orders. This also helps me understand what Claude thinks is missing.</p>
+                    <p><strong>This demonstrates DELEGATE (delegating the question-asking) and sets up better DESCRIBE.</strong></p>
+                </div>
+            </details>
+
+            <div class="critical-box">
+                <h3>🔴 Critical Pause: Get Another Perspective</h3>
+                <p>This is a great place to go to another model(s) [ChatGPT, Gemini, etc.] & ask that model to critique the output of Claude. You'll get better and different feedback loops if you get outside of this single chat and model!</p>
+            </div>
+
+            <h3>Follow-Up Prompt 2: Collaborative Gap Analysis</h3>
+            <div class="prompt-box">
+                <div class="prompt-label">
+                    <span>Gap Analysis</span>
+                    <button class="copy-button">Copy</button>
+                </div>
+                <div class="prompt-content">Now given what we have already and looking at the one-pager template, what are the pieces that you really think we need to dive into to really articulate this problem more fully and demonstrate that it is a true problem to solve and it's a problem worth tackling?
+
+
+Off the top of my head I already have a sense that we're missing some things around:
+  - data
+  - value
+  - scale of the problem
+  - business value to Housecall
+  - things like that
+
+There are some pieces that I just haven't really worked through and thought through yet, so I don't feel ready to write this one-pager.
+
+
+But I'm curious from your perspective: what are the pieces that we really need to work through and the elements that we're just missing?</div>
+            </div>
+
+            <details>
+                <summary>Talk Track: The Partnership Model</summary>
+                <div class="details-content">
+                    <p>See what I'm doing? I'm being <strong>vulnerable</strong>—'I don't feel ready.' I'm giving Claude some of my thinking but asking for more. We're thinking <strong>together</strong>.</p>
+                    <p><strong>This demonstrates DELEGATE (gap analysis) and DESCRIBE (being clear about uncertainty). DISCERN is a critical step here—evaluating what Claude gives back and whether you agree with the assessment.</strong></p>
+                    <p><strong>From here, I'll respond authentically to what Claude says. I'm not scripting this—I want to show you how I actually work.</strong></p>
+                </div>
+            </details>
+
+            <h2><span class="section-number">05</span> Toolkit: Ways Claude Can Help</h2>
+
+            <div class="takeaway-box">
+                <div class="takeaway-label">Key Takeaway</div>
+                <div class="takeaway-text">These tools represent the full range of ways Claude can support your work throughout the one-pager creation process.</div>
+            </div>
+
+            <div class="toolkit-grid">
+                <div class="toolkit-item">
+                    <div class="toolkit-title">Data & Snowflake MCP</div>
+                    <div class="toolkit-description">There's a Snowflake MCP—some of you have already connected it. Claude can help you write and run queries to quantify the problem.</div>
+                </div>
+                <div class="toolkit-item">
+                    <div class="toolkit-title">Screenshots & Visual Evidence</div>
+                    <div class="toolkit-description">Claude in Chrome can take screenshots, navigate your product, and show current state to make your case visual.</div>
+                </div>
+                <div class="toolkit-item">
+                    <div class="toolkit-title">Competitive Research</div>
+                    <div class="toolkit-description">Claude can research how others have tackled this problem or the scope of similar problems.</div>
+                </div>
+                <div class="toolkit-item">
+                    <div class="toolkit-title">Role-Playing Reviewers</div>
+                    <div class="toolkit-description">Have Claude read your one-pager as an engineer, your boss, a designer, an executive—and push back from their perspective.</div>
+                </div>
+                <div class="toolkit-item">
+                    <div class="toolkit-title">Context-Aware Role-Playing</div>
+                    <div class="toolkit-description">I've even had Claude read my Slack history with Ethan to understand how he asks questions, then pretend to be Ethan and review my doc.</div>
+                </div>
+                <div class="toolkit-item">
+                    <div class="toolkit-title">Confluence & Jira Access</div>
+                    <div class="toolkit-description">Use Atlassian MCP to read templates, pull in context, understand existing work.</div>
+                </div>
+            </div>
+
+            <div class="closing-box">
+                <h3>Remember</h3>
+                <p>You have one hour to create a compelling one-pager. Keep in mind:</p>
+                <ul>
+                    <li><strong>Your brain is the most powerful tool</strong> — Claude can't do your strategic thinking</li>
+                    <li><strong>Use the 4Ds</strong> — Delegate, Describe, Discern, Diligence</li>
+                    <li><strong>Claude can help at every step</strong> — data, screenshots, competitive research, role-playing</li>
+                    <li><strong>This is the most important step</strong> — align on the problem, and the rest gets easier</li>
+                </ul>
+                <p>You've got this. Go make a solid one-pager.</p>
+            </div>
+
+            <details>
+                <summary>Key Reminders for You (Lani)</summary>
+                <div class="details-content">
+                    <h3>What Matters Most:</h3>
+                    <ul>
+                        <li>Emphasize the partnership model—not "Claude writes it for you"</li>
+                        <li>Emphasize their brain is most important—AI can't replace strategic thinking</li>
+                        <li>Show the pattern, not the whole process—you can't do everything in 10 min</li>
+                        <li>The 4Ds are the framework—come back to this throughout</li>
+                        <li>Do it LIVE and REAL—no scripting, show authentic interaction</li>
+                    </ul>
+
+                    <h3>What NOT to Do:</h3>
+                    <ul>
+                        <li>Don't try to complete a whole one-pager in 10 minutes</li>
+                        <li>Don't just show them typing prompts—explain the THINKING behind each one</li>
+                        <li>Don't script or fake the demo—let it be real</li>
+                    </ul>
+
+                    <h3>Tools to Mention:</h3>
+                    <ul>
+                        <li><strong>Atlassian MCP</strong> — for reading Confluence</li>
+                        <li><strong>Claude in Chrome</strong> — browser extension or MCP for screenshots/navigation</li>
+                        <li><strong>Snowflake MCP</strong> — for data queries</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>Breakout Room Challenge (For Reference)</summary>
+                <div class="details-content">
+                    <p>After your demo, they'll work on their own one-pagers for 40 minutes.</p>
+                    <p><strong>The role-player technique:</strong> Have Claude take on roles (EM, PMM, designer, manager, exec) and review the one-pager from each perspective. This helps them pressure-test before presenting to real people.</p>
+                    <p>Just mention quickly: <em>"After you finish your one-pager, have Claude review it as your EM, your manager, Ethan—and push back. That's one of the most powerful uses of AI for product thinking."</em></p>
+                </div>
+            </details>
+
+        </div>
+    </div>
+
+    <script>
+        // Copy functionality for prompt boxes
+        document.querySelectorAll('.copy-button').forEach(button => {
+            button.addEventListener('click', async function() {
+                const promptBox = this.closest('.prompt-box');
+                const promptContent = promptBox.querySelector('.prompt-content');
+                const text = promptContent.textContent.trim();
+
+                try {
+                    await navigator.clipboard.writeText(text);
+
+                    // Visual feedback
+                    const originalText = this.textContent;
+                    this.textContent = 'Copied!';
+                    this.classList.add('copied');
+
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.classList.remove('copied');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    this.textContent = 'Failed';
+                    setTimeout(() => {
+                        this.textContent = 'Copy';
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

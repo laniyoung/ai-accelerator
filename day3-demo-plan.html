@@ -419,40 +419,43 @@
         }
 
         .critical-box {
-            background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+            background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
             padding: 2.5rem;
             margin: 3rem 0;
             position: relative;
-            color: white;
+            color: #0A2443;
+            border: 2px solid #DC2626;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.12);
         }
 
         .critical-box::before {
-            content: '';
+            content: '⚠️';
             position: absolute;
-            left: 0;
-            top: 0;
-            width: 5px;
-            height: 100%;
-            background: #7F1D1D;
+            left: 2rem;
+            top: 2rem;
+            font-size: 1.75rem;
         }
 
         .critical-box h3 {
             margin-top: 0;
+            margin-left: 2.5rem;
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1.25rem;
-            color: white;
+            color: #DC2626;
         }
 
         .critical-box p {
-            margin-bottom: 1rem;
+            margin-bottom: 0;
             line-height: 1.7;
-            color: white;
+            color: #0A2443;
+            font-weight: 500;
         }
 
         .critical-box strong {
             font-weight: 600;
-            color: white;
+            color: #991B1B;
         }
 
         details {
@@ -752,7 +755,7 @@ Start by familiarizing yourself with all of this. Once you've digested everythin
             </details>
 
             <div class="critical-box">
-                <h3>🔴 Critical Pause: Get Another Perspective</h3>
+                <h3>Critical Pause: Get Another Perspective</h3>
                 <p>This is a great place to go to another model(s) [ChatGPT, Gemini, etc.] & ask that model to critique the output of Claude. You'll get better and different feedback loops if you get outside of this single chat and model!</p>
             </div>
 
